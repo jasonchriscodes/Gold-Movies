@@ -2,7 +2,6 @@ package dev.jason.movies;
 
 import java.util.List;
 import java.util.Optional;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +25,12 @@ public class MovieController {
     );
   }
 
-  @GetMapping("/{id}")
+  @GetMapping("/{imdbId}")
   public ResponseEntity<Optional<Movie>> geSingleMovie(
-    @PathVariable ObjectId id
+    @PathVariable String imdbId
   ) {
     return new ResponseEntity<Optional<Movie>>(
-      movieService.singleMovie(id),
+      movieService.singleMovie(imdbId),
       HttpStatus.OK
     );
   }
